@@ -7,7 +7,9 @@ namespace ImageProcessPractice
     public partial class ImageEditor : Form
     {
         Stack<List<Bitmap>> history = new Stack<List<Bitmap>>();
-        PictureBox targetPictureBox;
+        private PictureBox targetPictureBox;
+
+        public PictureBox TargetPictureBox { get => targetPictureBox; set => targetPictureBox = value; }
         public ImageEditor()
         {
             InitializeComponent();
@@ -21,7 +23,6 @@ namespace ImageProcessPractice
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
         }
 
         private void grayScaleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +122,17 @@ namespace ImageProcessPractice
         {
             Rotation rotation = new Rotation(new Bitmap(targetPictureBox.Image));
             rotation.ShowDialog();
+        }
+
+        private void removeBackgroundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveBackgroundForm removeBackground = new RemoveBackgroundForm(this, new Bitmap(targetPictureBox.Image));
+            removeBackground.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
         }
     }
 }

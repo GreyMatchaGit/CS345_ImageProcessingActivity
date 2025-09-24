@@ -54,6 +54,7 @@
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
             // pictureBox1
             // 
@@ -91,14 +92,14 @@
             // openImageToolStripMenuItem
             // 
             openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            openImageToolStripMenuItem.Size = new Size(170, 26);
+            openImageToolStripMenuItem.Size = new Size(180, 26);
             openImageToolStripMenuItem.Text = "Open Image";
             openImageToolStripMenuItem.Click += openImageToolStripMenuItem_Click;
             // 
             // saveImageToolStripMenuItem
             // 
             saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-            saveImageToolStripMenuItem.Size = new Size(170, 26);
+            saveImageToolStripMenuItem.Size = new Size(180, 26);
             saveImageToolStripMenuItem.Text = "Save Image";
             // 
             // editToolStripMenuItem
@@ -150,6 +151,7 @@
             removeBackgroundToolStripMenuItem.Name = "removeBackgroundToolStripMenuItem";
             removeBackgroundToolStripMenuItem.Size = new Size(233, 26);
             removeBackgroundToolStripMenuItem.Text = "Remove Background";
+            removeBackgroundToolStripMenuItem.Click += removeBackgroundToolStripMenuItem_Click;
             // 
             // rotationToolStripMenuItem
             // 
