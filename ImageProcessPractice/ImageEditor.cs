@@ -134,5 +134,16 @@ namespace ImageProcessPractice
         {
             pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
         }
+
+        private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void videoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var videoForm = new VideoForm();
+            videoForm.Show();
+        }
     }
 }

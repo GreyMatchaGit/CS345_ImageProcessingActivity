@@ -45,6 +45,8 @@
             undoToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
+            saveFileDialog1 = new SaveFileDialog();
+            videoToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -58,10 +60,9 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(14, 16);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(700, 450);
+            pictureBox1.Size = new Size(800, 600);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -72,11 +73,11 @@
             menuStrip1.BackColor = Color.FromArgb(34, 34, 32);
             menuStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, undoToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, undoToolStripMenuItem, videoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(1434, 29);
+            menuStrip1.Padding = new Padding(6, 3, 0, 3);
+            menuStrip1.Size = new Size(1639, 37);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -86,21 +87,22 @@
             fileToolStripMenuItem.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             fileToolStripMenuItem.ForeColor = Color.FromArgb(231, 223, 213);
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(58, 25);
+            fileToolStripMenuItem.Size = new Size(74, 31);
             fileToolStripMenuItem.Text = "File";
             // 
             // openImageToolStripMenuItem
             // 
             openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            openImageToolStripMenuItem.Size = new Size(180, 26);
+            openImageToolStripMenuItem.Size = new Size(218, 32);
             openImageToolStripMenuItem.Text = "Open Image";
             openImageToolStripMenuItem.Click += openImageToolStripMenuItem_Click;
             // 
             // saveImageToolStripMenuItem
             // 
             saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-            saveImageToolStripMenuItem.Size = new Size(180, 26);
+            saveImageToolStripMenuItem.Size = new Size(218, 32);
             saveImageToolStripMenuItem.Text = "Save Image";
+            saveImageToolStripMenuItem.Click += saveImageToolStripMenuItem_Click;
             // 
             // editToolStripMenuItem
             // 
@@ -108,55 +110,55 @@
             editToolStripMenuItem.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold);
             editToolStripMenuItem.ForeColor = Color.FromArgb(231, 223, 213);
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(58, 25);
+            editToolStripMenuItem.Size = new Size(74, 31);
             editToolStripMenuItem.Text = "Edit";
             // 
             // copyImageToolStripMenuItem
             // 
             copyImageToolStripMenuItem.Name = "copyImageToolStripMenuItem";
-            copyImageToolStripMenuItem.Size = new Size(233, 26);
+            copyImageToolStripMenuItem.Size = new Size(302, 32);
             copyImageToolStripMenuItem.Text = "Copy Image";
             copyImageToolStripMenuItem.Click += copyImageToolStripMenuItem_Click;
             // 
             // grayScaleToolStripMenuItem
             // 
             grayScaleToolStripMenuItem.Name = "grayScaleToolStripMenuItem";
-            grayScaleToolStripMenuItem.Size = new Size(233, 26);
+            grayScaleToolStripMenuItem.Size = new Size(302, 32);
             grayScaleToolStripMenuItem.Text = "GrayScale";
             grayScaleToolStripMenuItem.Click += grayScaleToolStripMenuItem_Click;
             // 
             // invertToolStripMenuItem
             // 
             invertToolStripMenuItem.Name = "invertToolStripMenuItem";
-            invertToolStripMenuItem.Size = new Size(233, 26);
+            invertToolStripMenuItem.Size = new Size(302, 32);
             invertToolStripMenuItem.Text = "Invert";
             invertToolStripMenuItem.Click += invertToolStripMenuItem_Click;
             // 
             // sepiaToolStripMenuItem
             // 
             sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            sepiaToolStripMenuItem.Size = new Size(233, 26);
+            sepiaToolStripMenuItem.Size = new Size(302, 32);
             sepiaToolStripMenuItem.Text = "Sepia";
             sepiaToolStripMenuItem.Click += sepiaToolStripMenuItem_Click;
             // 
             // showHistogramToolStripMenuItem
             // 
             showHistogramToolStripMenuItem.Name = "showHistogramToolStripMenuItem";
-            showHistogramToolStripMenuItem.Size = new Size(233, 26);
+            showHistogramToolStripMenuItem.Size = new Size(302, 32);
             showHistogramToolStripMenuItem.Text = "Show Histogram";
             showHistogramToolStripMenuItem.Click += showHistogramToolStripMenuItem_Click;
             // 
             // removeBackgroundToolStripMenuItem
             // 
             removeBackgroundToolStripMenuItem.Name = "removeBackgroundToolStripMenuItem";
-            removeBackgroundToolStripMenuItem.Size = new Size(233, 26);
+            removeBackgroundToolStripMenuItem.Size = new Size(302, 32);
             removeBackgroundToolStripMenuItem.Text = "Remove Background";
             removeBackgroundToolStripMenuItem.Click += removeBackgroundToolStripMenuItem_Click;
             // 
             // rotationToolStripMenuItem
             // 
             rotationToolStripMenuItem.Name = "rotationToolStripMenuItem";
-            rotationToolStripMenuItem.Size = new Size(233, 26);
+            rotationToolStripMenuItem.Size = new Size(302, 32);
             rotationToolStripMenuItem.Text = "Rotation";
             rotationToolStripMenuItem.Click += rotationToolStripMenuItem_Click;
             // 
@@ -165,16 +167,15 @@
             undoToolStripMenuItem.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             undoToolStripMenuItem.ForeColor = Color.FromArgb(231, 223, 213);
             undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            undoToolStripMenuItem.Size = new Size(58, 25);
+            undoToolStripMenuItem.Size = new Size(74, 31);
             undoToolStripMenuItem.Text = "Undo";
             undoToolStripMenuItem.Click += undoToolStripMenuItem_Click;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(722, 12);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(825, 16);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(700, 450);
+            pictureBox2.Size = new Size(800, 600);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
@@ -184,24 +185,33 @@
             // 
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(pictureBox2);
-            panel1.Location = new Point(0, 30);
+            panel1.Location = new Point(0, 40);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(10);
-            panel1.Size = new Size(1434, 473);
+            panel1.Padding = new Padding(11, 13, 11, 13);
+            panel1.Size = new Size(1639, 631);
             panel1.TabIndex = 8;
+            // 
+            // videoToolStripMenuItem
+            // 
+            videoToolStripMenuItem.Font = new Font("Cascadia Code SemiBold", 12F, FontStyle.Bold);
+            videoToolStripMenuItem.ForeColor = Color.WhiteSmoke;
+            videoToolStripMenuItem.Name = "videoToolStripMenuItem";
+            videoToolStripMenuItem.Size = new Size(86, 31);
+            videoToolStripMenuItem.Text = "Video";
+            videoToolStripMenuItem.Click += videoToolStripMenuItem_Click;
             // 
             // ImageEditor
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 20, 20);
-            ClientSize = new Size(1434, 501);
+            ClientSize = new Size(1639, 668);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "ImageEditor";
             Text = "Image Editor";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -231,5 +241,7 @@
         private ToolStripMenuItem showHistogramToolStripMenuItem;
         private ToolStripMenuItem removeBackgroundToolStripMenuItem;
         private ToolStripMenuItem rotationToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
+        private ToolStripMenuItem videoToolStripMenuItem;
     }
 }
