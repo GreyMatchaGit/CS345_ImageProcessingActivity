@@ -15,6 +15,15 @@ namespace ImageProcessPractice
     {
         FilterInfoCollection videoDevices;
         VideoCaptureDevice videoSource;
+        private static String[] effects =
+        {
+            "None",
+            "Gaussian Blur",
+            "Sharpen",
+            "Mean Removal",
+            "Emboss Laplascian"
+        };
+        String selectedEffect = "None";
         public VideoForm()
         {
             InitializeComponent();
@@ -38,11 +47,39 @@ namespace ImageProcessPractice
 
             videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
             videoSource.NewFrame += new AForge.Video.NewFrameEventHandler(Video_NewFrame);
+
+            foreach (string effect in effects)
+            {
+                comboBox2.Items.Add(effect);
+            }
         }
 
         private void Video_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
+            Convolution3x3 effect = Conv3x3Config.Identity;
+            switch (selectedEffect)
+            {
+                case "Gaussian Blur":
+                    effect = Conv3x3Config.GaussianBlur;
+                    break;
+                case "Sharpen":
+                    effect = Conv3x3Config.Sharpen;
+                    break;
+                case "Mean Removal":
+                    effect = Conv3x3Config.MeanRemoval;
+                    break;
+                case "Emboss Laplascian":
+                    effect = Conv3x3Config.EmbossLaplascian;
+                    break;
+                default:
+                    break;
+            }
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
+
+            Convolution3x3.Apply(
+                bitmap,
+                effect
+            );
             pictureBox1.Image = bitmap;
         }
 
@@ -70,6 +107,18 @@ namespace ImageProcessPractice
             videoSource = new VideoCaptureDevice(videoDevices[comboBox1.SelectedIndex].MonikerString);
             videoSource.NewFrame += new AForge.Video.NewFrameEventHandler(Video_NewFrame);
             videoSource.Start();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Changed to " + comboBox2.SelectedItem);
+            selectedEffect = comboBox2.SelectedItem.ToString();
+        }
+
+        private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Console.WriteLine("Changed to " + comboBox2.SelectedItem);
+            selectedEffect = comboBox2.SelectedItem.ToString();
         }
     }
 }
